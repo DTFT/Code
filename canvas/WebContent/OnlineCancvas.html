@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Online-Canvas</title>
+<link href="canvas.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<header id="header">canvas画板Demo</header>
+	<section id="content">
+		<!-- 工具区 -->
+		<ul id="tool">
+			<li>
+				<h3>图像</h3>
+				<hr />
+				<ul id="image">
+					<li id="saveimg">
+						<form id="myform" action="down.jsp" method="post">
+							<input type="hidden" id="data" name="data" vlues="" />
+							<button onclick="saveimg()">Save</button>
+						</form>
+					</li>
+					<li id="clearimg"><button onclick="clearimg()">Clear</button></li>
+				</ul>
+			</li>
+			<li>
+				<h3>工具</h3>
+				<hr />
+				<ul id="means">
+					<li id="means_brush" onclick="drawBrush(0)"><img
+						src="pic/brush.png" /></li>
+					<li id="means_eraser" onclick="drawEraser(1)"><img
+						src="pic/eraser.png" /></li>
+					<li id="means_paint" onclick="drawPaint(2)"><img
+						src="pic/paint.png" /></li>
+					<li id="means_xiguan" onclick="drawXiguan(3)"><img
+						src="pic/xiguan.png" /></li>
+					<li id="means_text" onclick="drawText(4)"><img
+						src="pic/text.png" /></li>
+					<li id="means_fangdajing" onclick="drawFangdajing(5)"><img
+						src="pic/fangdajing.png" /></li>
+				</ul>
+			</li>
+			<li>
+				<h3>形狀</h3>
+				<hr />
+				<ul id="shape">
+					<li id="shape_line" onclick="drawLine(6)"><img
+						src="pic/line.png" /></li>
+					<li id="shape_circle" onclick="drawCircle(7)"><img
+						src="pic/circle.png" /></li>
+					<li id="shape_square" onclick="drawSquare(8)"><img
+						src="pic/square.png" /></li>
+					<li id="shape_poly" onclick="drawPoly(9)"><img
+						src="pic/poly.png" /></li>
+					<li id="shape_fill_circle" onclick="drawFill_circle(10)"><img
+						src="pic/fill_circle.png" /></li>
+					<li id="shape_fill_square" onclick="drawFill_square(11)"><img
+						src="pic/fill_square.png" /></li>
+				</ul>
+			</li>
+			<li>
+				<h3>线宽</h3>
+				<hr />
+				<ul id="size">
+					<li id="width_1" onclick="setLineWidth(0)"><img
+						src="pic/line1.png" /></li>
+					<li id="width_3" onclick="setLineWidth(1)"><img
+						src="pic/line2.png" /></li>
+					<li id="width_5" onclick="setLineWidth(2)"><img
+						src="pic/line3.png" /></li>
+					<li id="width_8" onclick="setLineWidth(3)"><img
+						src="pic/line4.png" /></li>
+
+				</ul>
+			</li>
+			<li>
+				<h3>颜色</h3>
+				<hr />
+				<ul id="color">
+					<li id="red" onclick="setColor(this,0)"></li>
+					<li id="green" onclick="setColor(this,1)"></li>
+					<li id="blue" onclick="setColor(this,2)"></li>
+					<li id="yellow" onclick="setColor(this,3)"></li>
+					<li id="white" onclick="setColor(this,4)"></li>
+					<li id="black" onclick="setColor(this,5)"></li>
+					<li id="pink" onclick="setColor(this,6)"></li>
+					<li id="purple" onclick="setColor(this,7)"></li>
+					<li id="cyan" onclick="setColor(this,8)"></li>
+					<li id="orange" onclick="setColor(this,9)"></li>
+				</ul>
+			</li>
+		</ul>
+
+
+		<!-- 画板区 -->
+		<canvas id="canvas" width="880" height="400">
+		浏览器不支持canvas标签,请升级浏览器
+	</canvas>
+
+		<!-- 连入js -->
+		<script src="canvas.js"></script>
+
+	</section>
+	<footer id="footer">
+		<small>郎彬辉@天津大学软件学院</small>
+	</footer>
+</body>
+</html>

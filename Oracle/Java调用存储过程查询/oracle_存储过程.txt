@@ -1,0 +1,16 @@
+1.建立一个包，在该包中，我定义类型test_cursor,是个游标。 如下： 
+Sql代码 
+create or replace package testpackage as  
+  TYPE test_cursor is ref cursor;   
+end testpackage;  
+
+
+
+
+2.建立存储过程。如下： 
+Sql代码 
+create or replace procedure sp_pro9(spNo in number,p_cursor out testpackage.test_cursor) is  
+begin  
+  open p_cursor for  
+    select * from emp where deptno = spNo;   
+end sp_pro9;  

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Canvas_Demo</title>
+</head>
+<body bgcolor="CCCC99">
+	<canvas id="demo" width="500px" height="500px" style="border:1px solid red" background="none">
+		<script>
+			var canvas=document.getElementById('demo');
+			var cxt=canvas.getContext('2d');
+			var flag=0;//设置标志位，检测鼠标是否摁下
+			//画图步骤
+			//开始绘图路径 cxt.beginPath();
+			//设置绘图开始点  cxt.moveTo();鼠标摁下
+			//绘制不同的点 cxt.lineTo();鼠标移动			
+			//结束路径 cxt.closePath();
+			//用画笔画出路径cxt.stroke();鼠标移动
+			//结束绘图，//鼠标抬起
+			
+			//鼠标摁下设置开始的
+			canvas.onmousedown=function(evt){
+				//获取当前鼠标相对于canvas画布起始点（0,0）的距离
+				//获取鼠标相对于页面顶端距离
+				//整合鼠标事件（针对w3c和IE）
+				evt=window.event||evt;
+				//pageX,pageY 鼠标相对页面横纵坐标
+				//(evt.pageX+'---'+evt.pageY);
+				//获取当前标签相对于页面顶端距离
+				//(this.offsetLeft+'---'+this.offsetTop);	
+				
+				//鼠标相对于canvas(0,0)点
+				var startX=evt.pageX-this.offsetLeft;
+				var startY=evt.pageY-this.offsetTop;
+				//alert(startX+'----'+startY);
+				cxt.beginPath();
+				cxt.moveTo(startX,startY);
+				flag=1;
+			}
+			
+			//鼠标移动,获取鼠标位置
+			canvas.onmousemove=function(evt){
+				evt=window.event||evt;
+				var endX=evt.pageX-this.offsetLeft;
+				var endY=evt.pageY-this.offsetTop;
+				//判断一下鼠标是否摁下
+				if(flag){
+				//移动的时候设置路径并画出
+				cxt.lineTo(endX,endY);
+				cxt.stroke();					
+				}
+			}
+			
+			//鼠标抬起，结束
+			canvas.onmouseup=function(){
+				flag=0;
+			}
+			
+			//鼠标移除取消画图
+			canvas.onmouseout=function(){
+				flag=0;
+			}
+			
+			
+			
+		</script>
+	
+	</canvas>
+
+</body>
+</html>
+
+
+
+
+
+

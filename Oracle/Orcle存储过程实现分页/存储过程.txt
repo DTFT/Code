@@ -1,0 +1,32 @@
+create or replace procedure fenye (
+tableName in varchar2,
+pageSize in number,
+pageNow in number,
+myrows out number,
+myPageCount  out number,
+p_cursor out testpackage.test_cursor) is
+
+v_sql varchar2(1000);
+v_begin number:=(pageNow-1)*pageSize+1;
+v_end number:=pageNow*pageSize;
+begin
+v_sql:='select * from(select t1.*,rownum rn from
+ (select * from'||tableName||') t1 where rownum<='||v_end||')
+where rn>='||v_begin;
+
+open p_cursor for v_sql;
+
+v_sql:='select count(*) from'||tableName;
+
+execute immediate v_sql into myrows;
+if mod(myrows,pageSize)=0 then
+  myPageCount:=myrows/pageSize;
+  else
+   myPageCount:=myrows/pageSize+1;
+end if;
+end;
+  
+
+
+  
+  
